@@ -1,3 +1,6 @@
+[![Build Status](https://app.travis-ci.com/MurDaD/fontsloader.svg?branch=master)](https://app.travis-ci.com/MurDaD/fontsloader)
+
+
 # 🚀 Faster Fonts Loader
 Fonts Loader gives you total control over the fonts loading via `@font-face`. You're getting a common interface to load fonts regardless of source. Some popular online libraries are included, like [Google Font API](https://developers.google.com/fonts/). You can also load fonts from self-hosted sources and control them via FontsLoader events tool.
 
