@@ -1,5 +1,6 @@
 [![Build Status](https://app.travis-ci.com/MurDaD/fontsloader.svg?branch=master)](https://app.travis-ci.com/MurDaD/fontsloader)
-
+[![codecov](https://codecov.io/gh/MurDaD/fontsloader/branch/master/graph/badge.svg?token=48MMJ01ZGM)](https://codecov.io/gh/MurDaD/fontsloader)
+[![ts-recommended-style](https://img.shields.io/badge/code%20style-recommended-brightgreen.svg)](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/eslint-recommended.ts)
 
 # 🚀 Faster Fonts Loader
 Fonts Loader gives you total control over the fonts loading via `@font-face`. You're getting a common interface to load fonts regardless of source. Some popular online libraries are included, like [Google Font API](https://developers.google.com/fonts/). You can also load fonts from self-hosted sources and control them via FontsLoader events tool.
@@ -72,7 +73,7 @@ FontsLoaderConfig = {
   inactive: function() {},
   fontloading: function(familyName, fvd) {},
   fontactive: function(familyName, fvd) {},
-  fontinactive: function(familyName, fvd) {}
+  fontinactive: function(familyName, fvd) {},
 };
 ```
 
@@ -82,7 +83,7 @@ It is possible to disable setting classes on the HTML element by setting the `cl
 
 ```javascript
 FontsLoaderConfig = {
-  classes: false
+  classes: false,
 };
 ```
 
@@ -90,7 +91,7 @@ You can also disable font events (callbacks) by setting the `events` parameter t
 
 ```javascript
 FontsLoaderConfig = {
-  events: false
+  events: false,
 };
 ```
 
@@ -105,9 +106,9 @@ You can change the default timeout by using the `timeout` option on the `FontsLo
 ```javascript
 FontsLoaderConfig = {
   google: {
-    families: ['Droid Sans']
+    families: ['Droid Sans'],
   },
-  timeout: 2000 // Set the timeout to two seconds
+  timeout: 2000, // Set the timeout to two seconds
 };
 ```
 
@@ -126,8 +127,8 @@ a colon. Variations are specified using [FVD notation](https://github.com/typeki
 FontsLoaderConfig = {
   custom: {
     families: ['My Font', 'My Other Font:n4,i4,n7'],
-    urls: ['/fonts.css']
-  }
+    urls: ['/fonts.css'],
+  },
 };
 ```
 

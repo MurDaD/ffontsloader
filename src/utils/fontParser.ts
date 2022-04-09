@@ -67,23 +67,23 @@ export class FontParser {
   }
 
   public parse() {
-    let length = this.fontFamilies_.length;
+    const length = this.fontFamilies_.length;
 
     for (let i = 0; i < length; i++) {
-      let elements = this.fontFamilies_[i].split(':');
-      let fontFamily = elements[0].replace(/\+/g, ' ');
+      const elements = this.fontFamilies_[i].split(':');
+      const fontFamily = elements[0].replace(/\+/g, ' ');
       let variations = ['n4'];
 
       if (elements.length >= 2) {
-        let fvds = this.parseVariations_(elements[1]);
+        const fvds = this.parseVariations_(elements[1]);
 
         if (fvds.length > 0) {
           variations = fvds;
         }
         if (elements.length == 3) {
-          let subsets = this.parseSubsets_(elements[2]);
+          const subsets = this.parseSubsets_(elements[2]);
           if (subsets.length > 0) {
-            let fontTestString = this.INT_FONTS[subsets[0]];
+            const fontTestString = this.INT_FONTS[subsets[0]];
 
             if (fontTestString) {
               this.fontTestStrings_[fontFamily] = fontTestString;
@@ -94,7 +94,7 @@ export class FontParser {
 
       // For backward compatibility
       if (!this.fontTestStrings_[fontFamily]) {
-        let hanumanTestString = this.INT_FONTS[fontFamily];
+        const hanumanTestString = this.INT_FONTS[fontFamily];
         if (hanumanTestString) {
           this.fontTestStrings_[fontFamily] = hanumanTestString;
         }
@@ -113,13 +113,13 @@ export class FontParser {
     if (!variation.match(/^[\w-]+$/)) {
       return '';
     }
-    let normalizedVariation = variation.toLowerCase();
-    let groups = this.VARIATION_MATCH.exec(normalizedVariation);
+    const normalizedVariation = variation.toLowerCase();
+    const groups = this.VARIATION_MATCH.exec(normalizedVariation);
     if (groups == null) {
       return '';
     }
-    let styleMatch = this.normalizeStyle_(groups[2]);
-    let weightMatch = this.normalizeWeight_(groups[1]);
+    const styleMatch = this.normalizeStyle_(groups[2]);
+    const weightMatch = this.normalizeWeight_(groups[1]);
     return [styleMatch, weightMatch].join('');
   }
 
@@ -134,7 +134,7 @@ export class FontParser {
     if (parsedWeight == null || parsedWeight == '') {
       return '4';
     }
-    let weight = this.WEIGHTS[parsedWeight];
+    const weight = this.WEIGHTS[parsedWeight];
     if (weight) {
       return weight;
     }
@@ -145,17 +145,17 @@ export class FontParser {
   }
 
   private parseVariations_(variations) {
-    let finalVariations: string[] = [];
+    const finalVariations: string[] = [];
 
     if (!variations) {
       return finalVariations;
     }
-    let providedVariations = variations.split(',');
-    let length = providedVariations.length;
+    const providedVariations = variations.split(',');
+    const length = providedVariations.length;
 
     for (let i = 0; i < length; i++) {
-      let variation = providedVariations[i];
-      let fvd = this.generateFontVariationDescription_(variation);
+      const variation = providedVariations[i];
+      const fvd = this.generateFontVariationDescription_(variation);
 
       if (fvd) {
         finalVariations.push(fvd);
@@ -165,7 +165,7 @@ export class FontParser {
   }
 
   public parseSubsets_(subsets) {
-    let finalSubsets = [];
+    const finalSubsets = [];
 
     if (!subsets) {
       return finalSubsets;

@@ -2,7 +2,6 @@
 
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const PrettierPlugin = require('prettier-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
@@ -23,19 +22,6 @@ const config = {
         open: true,
         host: 'localhost',
     },
-    plugins: [
-        // Add your plugins here
-        // Learn more about plugins from https://webpack.js.org/configuration/plugins/
-        new PrettierPlugin({
-            printWidth: 120,
-            tabWidth: 2,
-            useTabs: false,
-            semi: true,
-            encoding: 'utf-8',
-            extensions: [ '.ts' ],
-            singleQuote: true,
-        })
-    ],
     module: {
         rules: [
             {

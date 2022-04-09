@@ -1,4 +1,4 @@
-import { Font, FontsLoaderConfig, FontsLoaderDefaultConfig, ParsedFont } from './index';
+import { FontsLoaderConfig, FontsLoaderDefaultConfig, ParsedFont } from './index';
 import { GoogleLoader } from './modules/google';
 import { CustomLoader } from './modules/custom';
 import { EventBus } from './utils';

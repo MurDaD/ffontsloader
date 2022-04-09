@@ -3,7 +3,7 @@ import { FontsLoaderConfig } from '../index';
 
 describe('EventBus', () => {
   let eventBus;
-  let config: FontsLoaderConfig = {
+  const config: FontsLoaderConfig = {
     events: true,
     loading: jest.fn,
   };

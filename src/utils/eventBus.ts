@@ -10,8 +10,8 @@ export enum FontEvents {
 }
 
 export class EventBus {
-  private namespace_: string = 'wf';
-  private classSeparator_: string = '-';
+  private namespace_ = 'wf';
+  private classSeparator_ = '-';
   private event_: Event;
   private config_: FontsLoaderConfig;
   private htmlElement_;
@@ -22,21 +22,21 @@ export class EventBus {
     this.htmlElement_ = document.documentElement;
     document.addEventListener(
       FontEvents.LOADING,
-      (event: CustomEvent) => {
+      () => {
         this.handleLoading_();
       },
       false
     );
     document.addEventListener(
       FontEvents.ACTIVE,
-      (event: CustomEvent) => {
+      () => {
         this.handleActive_();
       },
       false
     );
     document.addEventListener(
       FontEvents.INACTIVE,
-      (event: CustomEvent) => {
+      () => {
         this.handleInactive_();
       },
       false
