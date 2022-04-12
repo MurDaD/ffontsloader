@@ -1,1 +1,8 @@
-# Coverage reposrtcoverage# Node modulesnode_modules# idea.idea
+# Coverage reposrt
+coverage
+
+# Node modules
+node_modules
+
+# idea
+.idea

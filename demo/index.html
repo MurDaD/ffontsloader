@@ -1,1 +1,46 @@
-<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <title>Fonts Loader demo</title>    <link rel="stylesheet" href="./style.css">    <script src="../dist/fontsloader.js"></script>    <script>      const { FontsLoader } = window;      FontsLoader.load({        google: {          families: ['Tangerine', 'IBM Plex Sans Thai Looped:300,700:latin,greek']        }      });    </script>    <style>        h1 {            font-family: 'Tangerine', serif;        }        h2.n3 {            font-family: 'IBM Plex Sans Thai Looped', serif;            font-weight: 300;        }        h2.n7 {            font-family: 'IBM Plex Sans Thai Looped', serif;            font-weight: 700;        }    </style></head><body><header>    <menu>        <li><a href="./index.html">Home</a></li>        <li><a href="./custom.html">Custom</a></li>        <li><a href="./events/index.html">Events</a></li>        <li><a href="./events/native.html">Native fonts events</a></li>        <li><a href="./events/inactive.html">Inactive events</a></li>    </menu></header>    <h1>I'm tangerine</h1>    <h2 class="n3">I'm IBM Plex Sans Thai Looped 300</h2>    <h2 class="n7">I'm IBM Plex Sans Thai Looped 700</h2>    <h4>I'm Droid Serif italic</h4></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fonts Loader demo</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="../dist/fontsloader.js"></script>
+
+    <script>
+      const { FontsLoader } = window;
+      FontsLoader.load({
+        google: {
+          families: ['Tangerine', 'IBM Plex Sans Thai Looped:300,700:latin,greek']
+        }
+      });
+    </script>
+    <style>
+        h1 {
+            font-family: 'Tangerine', serif;
+        }
+        h2.n3 {
+            font-family: 'IBM Plex Sans Thai Looped', serif;
+            font-weight: 300;
+        }
+        h2.n7 {
+            font-family: 'IBM Plex Sans Thai Looped', serif;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <menu>
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./custom.html">Custom</a></li>
+        <li><a href="./events/index.html">Events</a></li>
+        <li><a href="./events/native.html">Native fonts events</a></li>
+        <li><a href="./events/inactive.html">Inactive events</a></li>
+    </menu>
+</header>
+    <h1>I'm tangerine</h1>
+    <h2 class="n3">I'm IBM Plex Sans Thai Looped 300</h2>
+    <h2 class="n7">I'm IBM Plex Sans Thai Looped 700</h2>
+    <h4>I'm Droid Serif italic</h4>
+</body>
+</html>

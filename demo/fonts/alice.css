@@ -1,1 +1,5 @@
-/* latin */@font-face {    font-family: 'Alice Regular';    src: url(http://localhost:63342/fontsloader/demo/fonts/Alice-Regular.ttf) format('ttf');}
+/* latin */
+@font-face {
+    font-family: 'Alice Regular';
+    src: url(http://localhost:63342/fontsloader/demo/fonts/Alice-Regular.ttf) format('ttf');
+}

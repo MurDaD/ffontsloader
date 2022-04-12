@@ -1,1 +1,15 @@
-{  "parser": "@typescript-eslint/parser",  "plugins": [    "@typescript-eslint"  ],  "extends": [    "eslint:recommended",    "plugin:@typescript-eslint/eslint-recommended",    "plugin:@typescript-eslint/recommended"  ],  "rules": {    "comma-dangle": ["error", "always-multiline"],    "semi": ["error", "always"]  }}
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "semi": ["error", "always"]
+  }
+}
