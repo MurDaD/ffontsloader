@@ -2,6 +2,8 @@
 [![codecov](https://codecov.io/gh/MurDaD/fontsloader/branch/master/graph/badge.svg?token=48MMJ01ZGM)](https://codecov.io/gh/MurDaD/fontsloader)
 [![ts-recommended-style](https://img.shields.io/badge/code%20style-recommended-brightgreen.svg)](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/eslint-recommended.ts)
 
+#### Demo: https://murdad.github.io/fontsloader/demo/index.html
+
 # 🚀 Faster Fonts Loader
 Fonts Loader gives you total control over the fonts loading via `@font-face`. You're getting a common interface to load fonts regardless of source. Some popular online libraries are included, like [Google Font API](https://developers.google.com/fonts/). You can also load fonts from self-hosted sources and control them via FontsLoader events tool.
 
@@ -158,3 +160,14 @@ In this example, the `fonts.css` file might look something like this:
   src: ...;
 }
 ```
+
+## TODO
+- [ ] Add more tests
+- [ ] Increase coverage
+- [ ] Rewrite README.md
+- [ ] Update demos
+- [ ] Implement native loader for custom fonts
+- [ ] Add React, Angular and Vue examples
+- [ ] Add more font API sources
+- [ ] Use Google API v2
+

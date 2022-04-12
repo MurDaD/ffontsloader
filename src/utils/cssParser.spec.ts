@@ -1,7 +1,7 @@
 import { CssParser } from './cssParser';
 
 describe('CssParser', () => {
-  describe('positive flow', () => {
+  describe('works as expected', () => {
     const input = `/* latin */
 @font-face {
   font-family: 'Cantarell';
