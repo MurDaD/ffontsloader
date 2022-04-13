@@ -34,7 +34,7 @@ describe('Watcher', () => {
   const nativeLoad: LoadingMethod = 'native';
   const linkLoad = 'link';
   const mockedFontWatcher = mocked(FontWatcher, true);
-  const dispatchEventMock = jest.fn(event => {});
+  const dispatchEventMock = jest.fn();
 
   beforeEach(() => {
     Object.defineProperty(global, 'document', {

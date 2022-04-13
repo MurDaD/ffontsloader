@@ -2,13 +2,11 @@ import { CustomFamilies, CustomFamily, Font, FontLoader, ParsedFont } from '../.
 
 export class CustomLoader implements FontLoader {
   private readonly fonts_: Font[];
-  private readonly families_: CustomFamily[];
-  private readonly uris_: string[] | undefined;
+  private readonly uris_: string[];
 
   constructor(config: CustomFamilies) {
     this.fonts_ = [];
-    this.families_ = [];
-    this.uris_ = config.urls;
+    this.uris_ = config.urls || [];
     this.parseFamilyConfig_(config.families);
   }
 

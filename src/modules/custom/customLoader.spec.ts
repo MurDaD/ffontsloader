@@ -23,12 +23,13 @@ const fontUrl = 'https://css.url/';
 
 describe('CustomLoader', () => {
   let customLoader: CustomLoader;
-  const config: CustomFamilies = {
-    families: [ font1, font2, font3 ],
-    urls: [ fontUrl ],
-  };
+  let config: CustomFamilies;
 
   beforeEach(() => {
+    config = {
+      families: [ font1, font2, font3 ],
+      urls: [ fontUrl ],
+    };
     customLoader = new CustomLoader(config);
   });
 
@@ -38,7 +39,7 @@ describe('CustomLoader', () => {
 
   it('getUris()', () => {
     const result = customLoader.getUris();
-    expect(result).toEqual([ fontUrl ]);
+    expect(result).toEqual([ fontUrl, font3.url ]);
   });
 
   it('getFonts()', () => {

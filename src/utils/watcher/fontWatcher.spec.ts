@@ -13,7 +13,7 @@ describe('FontWatcher', () => {
   };
   const nativeLoad = 'native';
   const linkLoad = 'link';
-  const dispatchEventMock = jest.fn(() => {});
+  const dispatchEventMock = jest.fn();
 
   beforeEach(() => {
     Object.defineProperty(global, 'document', {

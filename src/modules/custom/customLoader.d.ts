@@ -1,7 +1,6 @@
 import { CustomFamilies, Font, FontLoader, ParsedFont } from '../../';
 export declare class CustomLoader implements FontLoader {
     private readonly fonts_;
-    private readonly families_;
     private readonly uris_;
     constructor(config: CustomFamilies);
     /**
