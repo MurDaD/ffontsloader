@@ -1,7 +1,6 @@
 import { Font, FontFamilies, FontLoader, ParsedFont } from '../../';
 import { GoogleFontApi } from './googleFontApi';
-import { CssParser } from '../../utils';
-import { FontParser } from '../../utils';
+import { CssParser, FontParser } from '../../utils';
 
 export class GoogleLoader implements FontLoader {
   private fonts_: FontFamilies;

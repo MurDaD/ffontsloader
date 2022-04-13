@@ -23,7 +23,6 @@ const load = async (fontsLoaderConfig: FontsLoaderConfig): Promise<void> => {
   if (config.classes || config.events) {
     new EventBus(config);
   }
-  console.table(config);
   if (config.google) {
     const googleLoader = new GoogleLoader(config.google);
     if (config.google.load === 'native') {
@@ -32,7 +31,6 @@ const load = async (fontsLoaderConfig: FontsLoaderConfig): Promise<void> => {
       googleLoader.getUris().forEach(addLinkElement_);
     }
     googleLoader.getFonts().forEach((font) => {
-      console.log(`adding google ${font.family}:${font.variation}`);
       watcher.add(font, config.google?.load || 'link');
     });
   }
@@ -41,12 +39,10 @@ const load = async (fontsLoaderConfig: FontsLoaderConfig): Promise<void> => {
     // TODO: implement native loader
     customLoader.getUris().forEach(addLinkElement_);
     customLoader.getFonts().forEach((font) => {
-      console.log(`adding custom ${font.family}:${font.variation}`);
       watcher.add(font, 'link');
     });
   }
   if (config.classes || config.events) {
-    console.log('watching  fonts');
     watcher.watchFonts();
   }
 };

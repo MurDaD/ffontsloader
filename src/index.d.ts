@@ -12,7 +12,6 @@ export type FontFamilies = {
 export type CustomFamily = {
   name: string;
   url: string;
-  format: string;
 };
 export type CustomFamilies = {
   families: (string | CustomFamily)[];

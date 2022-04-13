@@ -10,14 +10,20 @@
     const { FontsLoader } = window;
     FontsLoader.load({
       custom: {
-        families: ['Tangerine'],
+        families: ['Tangerine', {
+          name: 'Alice Regular',
+          url: 'https://murdad.github.io/fontsloader/demo/fonts/alice.css',
+        }],
         urls: ['https://fonts.googleapis.com/css?family=Tangerine'],
       }
     });
   </script>
   <style>
-    h1 {
+    h1.tangerine {
       font-family: 'Tangerine', serif;
+    }
+    h1.alice {
+      font-family: 'Alice Regular', serif;
     }
   </style>
 </head>
@@ -31,6 +37,7 @@
     <li><a href="./events/inactive.html">Inactive events</a></li>
   </menu>
 </header>
-<h1>I'm Tangerine, custom font</h1>
+<h1 class="tangerine">I'm Tangerine, custom font</h1>
+<h1 class="alice">I'm Alice Regular, custom font from TTF</h1>
 </body>
 </html>

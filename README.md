@@ -1,6 +1,7 @@
 [![Build Status](https://app.travis-ci.com/MurDaD/fontsloader.svg?branch=master)](https://app.travis-ci.com/MurDaD/fontsloader)
 [![codecov](https://codecov.io/gh/MurDaD/fontsloader/branch/master/graph/badge.svg?token=48MMJ01ZGM)](https://codecov.io/gh/MurDaD/fontsloader)
 [![ts-recommended-style](https://img.shields.io/badge/code%20style-recommended-brightgreen.svg)](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/eslint-recommended.ts)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/MurDaD/fontsloader/issues)
 
 #### Demo: https://murdad.github.io/fontsloader/demo/index.html
 

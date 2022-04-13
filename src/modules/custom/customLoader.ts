@@ -1,4 +1,4 @@
-import { CustomFamilies, CustomFamily, Font, FontLoader, ParsedFont } from '../../index';
+import { CustomFamilies, CustomFamily, Font, FontLoader, ParsedFont } from '../../';
 
 export class CustomLoader implements FontLoader {
   private readonly fonts_: Font[];
@@ -8,8 +8,8 @@ export class CustomLoader implements FontLoader {
   constructor(config: CustomFamilies) {
     this.fonts_ = [];
     this.families_ = [];
-    this.parseFamilyConfig_(config.families);
     this.uris_ = config.urls;
+    this.parseFamilyConfig_(config.families);
   }
 
   /**
@@ -42,7 +42,8 @@ export class CustomLoader implements FontLoader {
   private parseFamilyConfig_(families: (string | CustomFamily)[]): void {
     families.forEach((family) => {
       if (typeof family !== 'string') {
-        this.families_.push(family);
+        this.fonts_.push({ family: family.name, variation: 'n4'});
+        this.uris_?.push(family.url);
       } else {
         const font = family.split(':');
         const fontName = font[0];

@@ -1,4 +1,4 @@
-import { CustomFamilies, Font, FontLoader, ParsedFont } from '../../index';
+import { CustomFamilies, Font, FontLoader, ParsedFont } from '../../';
 export declare class CustomLoader implements FontLoader {
     private readonly fonts_;
     private readonly families_;
