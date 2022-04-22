@@ -1,5 +1,5 @@
 {
-  "name": "fontsloader",
+  "name": "ffontsloader",
   "version": "0.1.0",
   "description": "Fonts Loader gives you total control over the fonts loading via @font-face.",
   "main": "./dist/fontsloader.js",
@@ -69,10 +69,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MurDaD/fontsloader.git"
+    "url": "git+https://github.com/MurDaD/ffontsloader.git"
   },
   "bugs": {
-    "url": "https://github.com/MurDaD/fontsloader/issues"
+    "url": "https://github.com/MurDaD/ffontsloader/issues"
   },
-  "homepage": "https://github.com/MurDaD/fontsloader#readme"
+  "homepage": "https://github.com/MurDaD/ffontsloader#readme"
 }

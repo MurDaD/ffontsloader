@@ -1,9 +1,9 @@
-[![Build Status](https://app.travis-ci.com/MurDaD/fontsloader.svg?branch=master)](https://app.travis-ci.com/MurDaD/fontsloader)
-[![codecov](https://codecov.io/gh/MurDaD/fontsloader/branch/master/graph/badge.svg?token=48MMJ01ZGM)](https://codecov.io/gh/MurDaD/fontsloader)
+[![Build Status](https://app.travis-ci.com/MurDaD/ffontsloader.svg?branch=master)](https://app.travis-ci.com/MurDaD/fontsloader)
+[![codecov](https://codecov.io/gh/MurDaD/ffontsloader/branch/master/graph/badge.svg?token=48MMJ01ZGM)](https://codecov.io/gh/MurDaD/fontsloader)
 [![ts-recommended-style](https://img.shields.io/badge/code%20style-recommended-brightgreen.svg)](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/src/configs/eslint-recommended.ts)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/MurDaD/fontsloader/issues)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/MurDaD/ffontsloader/issues)
 
-#### Demo: https://murdad.github.io/fontsloader/demo/index.html
+#### Demo: https://murdad.github.io/ffontsloader/demo/index.html
 
 # 🚀 Faster Fonts Loader
 Fonts Loader gives you total control over the fonts loading via `@font-face`. You're getting a common interface to load fonts regardless of source. Some popular online libraries are included, like [Google Font API](https://developers.google.com/fonts/). You can also load fonts from self-hosted sources and control them via FontsLoader events tool.
@@ -17,7 +17,7 @@ Fonts Loader is compatible with [Web Font Loader](https://github.com/typekit/web
 To use the Fonts Loader library, just include it in your page and tell it which fonts to load. For example, you could load fonts from [Google Fonts](http://www.google.com/fonts/) using the Fonts Loader hosted on [Google Hosted Libraries](https://developers.google.com/speed/libraries/) using the following code.
 
 ```html
-<script src="https://murdad.github.io/fontsloader/dist/fontsloader.js"></script>
+<script src="https://murdad.github.io/ffontsloader/dist/fontsloader.js"></script>
 <script>
   FontsLoader.load({
     google: {
@@ -29,7 +29,7 @@ To use the Fonts Loader library, just include it in your page and tell it which 
 
 It is also possible to load fonts asynchronosly, here is an example:
 ```html
-<script src="https://murdad.github.io/fontsloader/dist/fontsloader.js"></script>
+<script src="https://murdad.github.io/ffontsloader/dist/fontsloader.js"></script>
 <script>
     const { FontsLoader } = window;
     (async function() {
