@@ -2,7 +2,7 @@ menu {
     display: flex;
     list-style: none;
     padding: 0;
-    width: 400px;
+    width: 500px;
 }
 
 li {
@@ -11,4 +11,14 @@ li {
 
 a {
     width: 100%;
+}
+
+pre {
+    unicode-bidi: embed;
+    font-family: monospace;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    background: aliceblue;
+    border: 3px solid #868686;
+    padding: 15px;
 }

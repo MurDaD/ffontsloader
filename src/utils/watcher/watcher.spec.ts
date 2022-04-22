@@ -18,11 +18,9 @@ jest.mock('./fontWatcher', () => {
   };
 });
 jest.useFakeTimers();
-jest.spyOn(global, 'setTimeout');
 
 describe('Watcher', () => {
   let watcher;
-  const timeout = 1;
   const font1 = {
     family: 'Font',
     variation: 'n4',
@@ -57,25 +55,21 @@ describe('Watcher', () => {
     });
 
     it('and all fonts loaded', () => {
-      jest.useFakeTimers();
       watchFunc.mockImplementation(() => true);
       getFontFunc.mockImplementationOnce(() => font1);
       getFontFunc.mockImplementationOnce(() => font2);
-      watcher = new Watcher(timeout);
+      watcher = new Watcher();
       watcher.add(font1, nativeLoad);
       watcher.add(font2, linkLoad);
       watcher.watchFonts();
-      jest.runOnlyPendingTimers();
-      expect(dispatchEventMock).toHaveBeenCalledTimes(4);
+      expect(dispatchEventMock).toHaveBeenCalledTimes(3);
 
-      expect(dispatchEventMock.mock.calls[0][0].type).toEqual(FontEvents.LOADING);
-      expect(dispatchEventMock.mock.calls[0][0].detail).toEqual(null);
+      expect(dispatchEventMock.mock.calls[0][0].type).toEqual(FontEvents.FONT_ACTIVE);
+      expect(dispatchEventMock.mock.calls[0][0].detail).toEqual(`${font1.family}:${font1.variation}`);
       expect(dispatchEventMock.mock.calls[1][0].type).toEqual(FontEvents.FONT_ACTIVE);
-      expect(dispatchEventMock.mock.calls[1][0].detail).toEqual(`${font1.family}:${font1.variation}`);
-      expect(dispatchEventMock.mock.calls[2][0].type).toEqual(FontEvents.FONT_ACTIVE);
-      expect(dispatchEventMock.mock.calls[2][0].detail).toEqual(`${font2.family}:${font2.variation}`);
-      expect(dispatchEventMock.mock.calls[3][0].type).toEqual(FontEvents.ACTIVE);
-      expect(dispatchEventMock.mock.calls[3][0].detail).toEqual(null);
+      expect(dispatchEventMock.mock.calls[1][0].detail).toEqual(`${font2.family}:${font2.variation}`);
+      expect(dispatchEventMock.mock.calls[2][0].type).toEqual(FontEvents.ACTIVE);
+      expect(dispatchEventMock.mock.calls[2][0].detail).toEqual(null);
 
       expect(mockedFontWatcher).toHaveBeenCalledTimes(2);
       expect(mockedFontWatcher).toHaveBeenNthCalledWith(1, font1, nativeLoad);
@@ -83,29 +77,32 @@ describe('Watcher', () => {
     });
 
     it('and no fonts loaded', () => {
-      jest.useFakeTimers();
       watchFunc.mockImplementation(() => false);
       getFontFunc.mockImplementationOnce(() => font1);
       getFontFunc.mockImplementationOnce(() => font2);
-      watcher = new Watcher(timeout);
+      watcher = new Watcher();
       watcher.add(font1, nativeLoad);
       watcher.add(font2, linkLoad);
       watcher.watchFonts();
-      jest.runOnlyPendingTimers();
-      expect(dispatchEventMock).toHaveBeenCalledTimes(4);
+      expect(dispatchEventMock).toHaveBeenCalledTimes(3);
 
-      expect(dispatchEventMock.mock.calls[0][0].type).toEqual(FontEvents.LOADING);
-      expect(dispatchEventMock.mock.calls[0][0].detail).toEqual(null);
+      expect(dispatchEventMock.mock.calls[0][0].type).toEqual(FontEvents.FONT_INACTIVE);
+      expect(dispatchEventMock.mock.calls[0][0].detail).toEqual(`${font1.family}:${font1.variation}`);
       expect(dispatchEventMock.mock.calls[1][0].type).toEqual(FontEvents.FONT_INACTIVE);
-      expect(dispatchEventMock.mock.calls[1][0].detail).toEqual(`${font1.family}:${font1.variation}`);
-      expect(dispatchEventMock.mock.calls[2][0].type).toEqual(FontEvents.FONT_INACTIVE);
-      expect(dispatchEventMock.mock.calls[2][0].detail).toEqual(`${font2.family}:${font2.variation}`);
-      expect(dispatchEventMock.mock.calls[3][0].type).toEqual(FontEvents.INACTIVE);
-      expect(dispatchEventMock.mock.calls[3][0].detail).toEqual(null);
+      expect(dispatchEventMock.mock.calls[1][0].detail).toEqual(`${font2.family}:${font2.variation}`);
+      expect(dispatchEventMock.mock.calls[2][0].type).toEqual(FontEvents.INACTIVE);
+      expect(dispatchEventMock.mock.calls[2][0].detail).toEqual(null);
 
       expect(mockedFontWatcher).toHaveBeenCalledTimes(2);
       expect(mockedFontWatcher).toHaveBeenNthCalledWith(1, font1, nativeLoad);
       expect(mockedFontWatcher).toHaveBeenNthCalledWith(2, font2, linkLoad);
     });
+  });
+
+  it('fontLoaded()', () => {
+    watcher = new Watcher();
+    watcher.fontLoaded(font1.family);
+    watcher.fontLoaded(font2.family);
+    expect(watcher.loadedFonts_).toEqual([font1.family, font2.family]);
   });
 });

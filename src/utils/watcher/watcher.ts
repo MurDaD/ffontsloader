@@ -4,23 +4,24 @@ import { FontWatcher } from './fontWatcher';
 
 export class Watcher {
   private fontWatchers_: FontWatcher[] = [];
-  private timeout: number;
-
-  constructor(timeout: number) {
-    this.timeout = timeout;
-  }
+  private loadedFonts_: string[] = [];
+  private watched_ = false;
 
   public add(font: Font, load: LoadingMethod) {
     this.fontWatchers_.push(new FontWatcher(font, load));
   }
 
+  public fontLoaded(fontName: string) {
+    this.loadedFonts_.push(fontName);
+  }
+
   public watchFonts() {
-    document.dispatchEvent(new CustomEvent(FontEvents.LOADING, {}));
-    setTimeout(() => {
+    if (!this.watched_) {
+      this.watched_ = true;
       let atLeastOneLoaded = false;
       this.fontWatchers_.forEach((fontWatcher) => {
-        const loaded = fontWatcher.watch();
         const font = fontWatcher.getFont();
+        const loaded = this.loadedFonts_.includes(font.family) || fontWatcher.watch();
         if (loaded) {
           atLeastOneLoaded = true;
         }
@@ -31,6 +32,6 @@ export class Watcher {
         );
       });
       document.dispatchEvent(new CustomEvent(atLeastOneLoaded ? FontEvents.ACTIVE : FontEvents.INACTIVE, {}));
-    }, this.timeout);
+    }
   }
 }

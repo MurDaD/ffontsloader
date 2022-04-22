@@ -17,7 +17,7 @@ Fonts Loader is compatible with [Web Font Loader](https://github.com/typekit/web
 To use the Fonts Loader library, just include it in your page and tell it which fonts to load. For example, you could load fonts from [Google Fonts](http://www.google.com/fonts/) using the Fonts Loader hosted on [Google Hosted Libraries](https://developers.google.com/speed/libraries/) using the following code.
 
 ```html
-<script src="https://ajax.googleapis.com/ajax/libs/fontsloader/0.1.0/fontsloader.js"></script>
+<script src="https://murdad.github.io/fontsloader/dist/fontsloader.js"></script>
 <script>
   FontsLoader.load({
     google: {
@@ -27,9 +27,25 @@ To use the Fonts Loader library, just include it in your page and tell it which 
 </script>
 ```
 
+It is also possible to load fonts asynchronosly, here is an example:
+```html
+<script src="https://murdad.github.io/fontsloader/dist/fontsloader.js"></script>
+<script>
+    const { FontsLoader } = window;
+    (async function() {
+        await FontsLoader.load({
+            google: {
+                families: ['Tangerine', 'IBM Plex Sans Thai Looped:300,700:latin,greek']
+            }
+        });
+    })();
+</script>
+
+```
+
 ## Configuration
 
-The Fonts Loader configuration is defined by a global variable named `FontsLoaderConfig`, or passed directly to the `FontsLoader.load` method. It defines which fonts to load from each web font provider and gives you the option to specify callbacks for certain events. When using the asynchronous approach, you must define the global variable `FontsLoaderConfig` before the code that loads the Fonts Loader (as in the example above).
+The Fonts Loader configuration is passed directly to the `FontsLoader.load` method. It defines which fonts to load from each web font provider and gives you the option to specify callbacks for certain events.
 
 ### Events
 
@@ -67,17 +83,17 @@ Keep in mind that `font-weight: normal` maps to `font-weight: 400` and `font-wei
 
 If fonts are loaded multiple times on a single page, the CSS classes continue to update to reflect the current state of the page. The global `wf-loading` class is applied whenever fonts are being requested (even if other fonts are already active or inactive). The `wf-inactive` class is applied only if none of the fonts on the page have rendered. Otherwise, the `wf-active` class is applied (even if some fonts are inactive).
 
-JavaScript events are implemented as callback functions on the `FontsLoaderConfig` configuration object.
+JavaScript events are implemented as callback functions on the configuration object.
 
 ```javascript
-FontsLoaderConfig = {
+FontsLoader.load({
   loading: function() {},
   active: function() {},
   inactive: function() {},
   fontloading: function(familyName, fvd) {},
   fontactive: function(familyName, fvd) {},
   fontinactive: function(familyName, fvd) {},
-};
+});
 ```
 
 The `fontloading`, `fontactive` and `fontinactive` callbacks are passed the family name and font variation description of the font that concerns the event.
@@ -85,17 +101,17 @@ The `fontloading`, `fontactive` and `fontinactive` callbacks are passed the fami
 It is possible to disable setting classes on the HTML element by setting the `classes` configuration parameter to `false` (defaults to `true`).
 
 ```javascript
-FontsLoaderConfig = {
+FontsLoader.load({
   classes: false,
-};
+});
 ```
 
 You can also disable font events (callbacks) by setting the `events` parameter to `false` (defaults to `true`).
 
 ```javascript
-FontsLoaderConfig = {
+FontsLoader.load({
   events: false,
-};
+});
 ```
 
 If both events and classes are disabled, the Fonts Loader does not perform font watching and only acts as a way to insert @font-face rules in the document.
@@ -104,15 +120,17 @@ If both events and classes are disabled, the Fonts Loader does not perform font 
 
 Since the Internet is not 100% reliable, it's possible that a font will fail to load. The `fontinactive` event will be triggered after 5 seconds if the font fails to render. If *at least* one font successfully renders, the `active` event will be triggered, else the `inactive` event will be triggered.
 
-You can change the default timeout by using the `timeout` option on the `FontsLoaderConfig` object.
+You can change the default timeout by using the `timeout` option on the configuration object.
+
+NOTE: if FontFace callback is triggered that all fonts have been loaded, the timeout would be ignored.
 
 ```javascript
-FontsLoaderConfig = {
+FontsLoader.load({
   google: {
     families: ['Droid Sans'],
   },
   timeout: 2000, // Set the timeout to two seconds
-};
+});
 ```
 
 The timeout value should be in milliseconds, and defaults to 3000 milliseconds (3 seconds) if not supplied.
@@ -127,12 +145,31 @@ by appending the variations separated by commas to the family name separated by
 a colon. Variations are specified using [FVD notation](https://github.com/typekit/fvd).
 
 ```javascript
-FontsLoaderConfig = {
+FontsLoader.load({
   custom: {
     families: ['My Font', 'My Other Font:n4,i4,n7'],
     urls: ['/fonts.css'],
   },
-};
+});
+```
+
+Or you can also load families as objects
+
+```javascript
+FontsLoader.load({
+  custom: {
+    families: [
+      {
+        name: 'My Font',
+        url: '/font.css',
+      },
+      {
+        name: 'My Other Font',
+        url: '/other-font.css',
+      },
+    ],
+  },
+});
 ```
 
 In this example, the `fonts.css` file might look something like this:

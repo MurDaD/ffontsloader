@@ -5,39 +5,62 @@
   <title>Custom Fonts demo</title>
   <link rel="stylesheet" href="./style.css">
   <script src="../dist/fontsloader.js"></script>
-
+  <style>
+    h1.ostrich-sans {
+      font-family: 'Ostrich Sans', serif;
+    }
+    h1.ostrich-sans-rounded {
+      font-family: 'Ostrich Sans Rounded', serif;
+    }
+    h1.ostrich-sans-dashed {
+      font-family: 'Ostrich Sans Dashed', serif;
+    }
+  </style>
   <script>
     const { FontsLoader } = window;
     FontsLoader.load({
+      timeout: 500,
       custom: {
-        families: ['Tangerine', {
-          name: 'Alice Regular',
-          url: 'https://murdad.github.io/fontsloader/demo/fonts/alice.css',
-        }],
-        urls: ['https://fonts.googleapis.com/css?family=Tangerine'],
-      }
+        families: ['Ostrich Sans Rounded', 'Ostrich Sans', 'Ostrich Sans Dashed'],
+        urls: ['./fonts/ostrich-sans/ostrich-sans.css'],
+      },
+      events: true,
+      loading: function() {
+        console.log('loading...');
+      },
+      active: function() {
+        console.log('active');
+      },
+      inactive: function() {
+        console.log('inactive!');
+      },
+      fontloading: function(familyName, fvd) {
+        console.log(`loading ${familyName}:${fvd} ...`);
+      },
+      fontactive: function(familyName, fvd) {
+        console.log(`active ${familyName}:${fvd}`);
+      },
+      fontinactive: function(familyName, fvd) {
+        console.log(`inactive ${familyName}:${fvd}`);
+      },
     });
   </script>
-  <style>
-    h1.tangerine {
-      font-family: 'Tangerine', serif;
-    }
-    h1.alice {
-      font-family: 'Alice Regular', serif;
-    }
-  </style>
 </head>
 <body>
 <header>
   <menu>
     <li><a href="./index.html">Home</a></li>
     <li><a href="./custom.html">Custom</a></li>
+    <li><a href="./async.html">Async</a></li>
     <li><a href="./events/index.html">Events</a></li>
     <li><a href="./events/native.html">Native fonts events</a></li>
     <li><a href="./events/inactive.html">Inactive events</a></li>
   </menu>
 </header>
-<h1 class="tangerine">I'm Tangerine, custom font</h1>
-<h1 class="alice">I'm Alice Regular, custom font from TTF</h1>
+  <pre>Loading custom fonts from ./fonts/ostrich-sans</pre>
+  <h1 class="ostrich-sans">I'm Ostrich Sans, custom font from WOFF</h1>
+  <h1 class="ostrich-sans-rounded">I'm Ostrich Sans Rounded, custom font from WOFF</h1>
+  <h1 class="ostrich-sans-dashed">I'm Ostrich Sans Rounded, custom font from WOFF</h1>
 </body>
+
 </html>

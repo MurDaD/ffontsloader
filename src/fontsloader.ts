@@ -1,7 +1,7 @@
 import { FontsLoaderConfig, FontsLoaderDefaultConfig, ParsedFont } from './index';
 import { GoogleLoader } from './modules/google';
 import { CustomLoader } from './modules/custom';
-import { EventBus } from './utils';
+import { EventBus, FontEvents } from './utils';
 import { Watcher } from './utils/watcher/watcher';
 
 const DEFAULT_CONFIG: FontsLoaderDefaultConfig = {
@@ -19,7 +19,7 @@ const load = async (fontsLoaderConfig: FontsLoaderConfig): Promise<void> => {
     ...DEFAULT_CONFIG,
     ...fontsLoaderConfig,
   };
-  const watcher = new Watcher(config.timeout);
+  const watcher = new Watcher();
   if (config.classes || config.events) {
     new EventBus(config);
   }
@@ -35,15 +35,29 @@ const load = async (fontsLoaderConfig: FontsLoaderConfig): Promise<void> => {
     });
   }
   if (config.custom) {
+    if (config.custom.load === 'native') {
+      // TODO: implement native loader
+      throw new Error('Native load is not implemented for custom fonts.');
+    }
     const customLoader = new CustomLoader(config.custom);
-    // TODO: implement native loader
     customLoader.getUris().forEach(addLinkElement_);
     customLoader.getFonts().forEach((font) => {
       watcher.add(font, 'link');
     });
   }
   if (config.classes || config.events) {
-    watcher.watchFonts();
+    document.dispatchEvent(new CustomEvent(FontEvents.LOADING, {}));
+    document.fonts.onloadingdone = (event: FontFaceSetLoadEvent) => {
+      event.fontfaces.forEach(async fontFace => {
+        if (fontFace.status === 'loaded') {
+          watcher.fontLoaded(fontFace.family);
+        }
+      });
+      watcher.watchFonts();
+    };
+    setTimeout(() => {
+      watcher.watchFonts();
+    }, config.timeout);
   }
 };
 
@@ -53,11 +67,12 @@ const load = async (fontsLoaderConfig: FontsLoaderConfig): Promise<void> => {
  */
 const loadFontToBrowser_ = async (fonts: ParsedFont[]): Promise<void> => {
   for (const font of fonts) {
-    const fontFace = await new FontFace(font.fontFamily, font.src, {
+    const fontFace = new FontFace(font.fontFamily, font.src, {
       style: font.fontStyle,
       unicodeRange: font.unicodeRange,
       weight: font.fontWeight,
-    }).load();
+    });
+    await fontFace.load();
     document.fonts.add(fontFace);
   }
 };

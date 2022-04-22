@@ -11,11 +11,13 @@
     <menu>
         <li><a href="../index.html">Home</a></li>
         <li><a href="../custom.html">Custom</a></li>
+        <li><a href="../async.html">Async</a></li>
         <li><a href="../events/index.html">Events</a></li>
         <li><a href="../events/native.html">Native fonts events</a></li>
         <li><a href="../events/inactive.html">Inactive events</a></li>
     </menu>
 </header>
+    <pre>All the fonts are non existing, so they won't be loaded and &lt;html&gt; class will change</pre>
     <h1 class="meh">I don't exist ;(</h1>
     <h1 class="meh-two">I also don't exist ;(</h1>
     <hr/>
@@ -57,7 +59,7 @@
           logLog(`active ${familyName}:${fvd}`);
         },
         fontinactive: function(familyName, fvd) {
-          console.log();
+          console.log(`inactive ${familyName}:${fvd}`);
           logLog(`failed ${familyName}:${fvd}`);
         },
       });

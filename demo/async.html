@@ -8,11 +8,13 @@
 
     <script>
       const { FontsLoader } = window;
-      FontsLoader.load({
-        google: {
-          families: ['Tangerine', 'IBM Plex Sans Thai Looped:300,700:latin,greek']
-        }
-      });
+      (async function() {
+        await FontsLoader.load({
+          google: {
+            families: ['Tangerine', 'IBM Plex Sans Thai Looped:300,700:latin,greek']
+          }
+        });
+      })();
     </script>
     <style>
         h1 {
@@ -39,7 +41,7 @@
         <li><a href="./events/inactive.html">Inactive events</a></li>
     </menu>
 </header>
-    <pre>Just loading some fonts from Google fonts API</pre>
+    <pre>Example of asynchronous call</pre>
     <h1>I'm tangerine</h1>
     <h2 class="n3">I'm IBM Plex Sans Thai Looped 300</h2>
     <h2 class="n7">I'm IBM Plex Sans Thai Looped 700</h2>
