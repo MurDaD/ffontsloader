@@ -40,7 +40,12 @@ It is also possible to load fonts asynchronosly, here is an example:
         });
     })();
 </script>
+```
 
+Or using npm
+
+```
+$ npm i --save ffontsloader
 ```
 
 ## Configuration
